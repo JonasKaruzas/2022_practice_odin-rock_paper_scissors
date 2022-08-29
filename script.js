@@ -10,4 +10,24 @@ function getComputerChoice(objects) {
   return objects[getRandomInt(0, objects.length)];
 }
 
-console.log(getComputerChoice(objects));
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "tie";
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    return "player won";
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
+    return "player won";
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    return "player won";
+  } else {
+    return "computer won";
+  }
+}
+
+const player = objects[0];
+console.log("player - ", player);
+
+const computer = getComputerChoice(objects);
+console.log("computer - ", computer);
+
+console.log("result - ", playRound(player, computer));
