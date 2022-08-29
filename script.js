@@ -1,17 +1,32 @@
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorBtn = document.querySelector(".scissor");
-const resetBtn = document.querySelector("resetBtn");
-
+const resetBtn = document.querySelector(".resetBtn");
 const gameOverText = document.querySelector(".gameOver-text");
-
-const playerScoreElement = document.querySelector("playerScore");
-const computerScoreElement = document.querySelector("computerScore");
+const playerScoreElement = document.querySelector(".playerScore");
+const computerScoreElement = document.querySelector(".computerScore");
+const objects = ["rock", "paper", "scissors"];
+const howManyRounds = 5;
 
 let playerScore = 0;
 let computerScore = 0;
 let gameOver = false;
-const howManyRounds = 5;
+
+rockBtn.addEventListener("click", () => {
+  playRound("rock", getComputerChoice(objects));
+});
+
+paperBtn.addEventListener("click", () => {
+  playRound("paper", getComputerChoice(objects));
+});
+
+scissorBtn.addEventListener("click", () => {
+  playRound("scissor", getComputerChoice(objects));
+});
+
+resetBtn.addEventListener("click", () => {
+  resetGame();
+});
 
 function getComputerChoice(objects) {
   function getRandomInt(min, max) {
@@ -25,34 +40,35 @@ function getComputerChoice(objects) {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "tie";
+    return;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore++;
-    return "player won";
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore++;
-    return "player won";
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore++;
-    return "player won";
   } else {
     computerScore++;
-    return "computer won";
+  }
+
+  updateScore();
+  isGameOver();
+}
+
+function updateScore() {
+  playerScoreElement.innerText = playerScore;
+  computerScoreElement.innerText = computerScore;
+}
+
+function isGameOver() {
+  if (playerScore + computerScore === howManyRounds) {
+    gameOverText.style.display = "flex";
   }
 }
 
-function game(howManyRounds) {
-  const objects = ["rock", "paper", "scissors"];
-
-  for (let i = 0; i < howManyRounds; i++) {
-    const player = "rock";
-    const computer = getComputerChoice(objects);
-
-    console.log("result - ", playRound(player, computer));
-    console.log(playerScore);
-    console.log(computerScore);
-  }
-  console.log("finished");
+function resetGame() {
+  gameOverText.style.display = "none";
+  playerScore = 0;
+  computerScore = 0;
+  updateScore();
 }
-
-game(howManyRounds);
