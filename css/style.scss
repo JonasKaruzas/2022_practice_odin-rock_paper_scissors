@@ -41,13 +41,14 @@ main {
     border: 2px solid black;
 
     &:hover {
-      background-color: red;
+      color: red;
     }
 
     &:active {
-      background-color: transparent;
-      color: red;
-      border: 2px solid red;
+      // background-color: transparent;
+      // background-color: red;
+      // color: red;
+      // border: 2px solid red;
     }
 
     span {
@@ -146,4 +147,12 @@ main {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.playerActive {
+  color: red;
+}
+
+.computerActive {
+  outline: 4px solid red !important;
 }

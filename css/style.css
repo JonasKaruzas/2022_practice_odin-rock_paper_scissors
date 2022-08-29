@@ -39,12 +39,7 @@ main h2 {
   border: 2px solid black;
 }
 .card-container .card:hover {
-  background-color: red;
-}
-.card-container .card:active {
-  background-color: transparent;
   color: red;
-  border: 2px solid red;
 }
 .card-container .card span {
   font-size: 60px;
@@ -131,4 +126,12 @@ main h2 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.playerActive {
+  color: red;
+}
+
+.computerActive {
+  outline: 4px solid red !important;
 }/*# sourceMappingURL=style.css.map */
