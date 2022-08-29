@@ -1,0 +1,126 @@
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 140px;
+  background-color: lightgrey;
+}
+
+main h2 {
+  text-align: center;
+  margin: 40px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.card-container .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid black;
+}
+.card-container .card:hover {
+  background-color: red;
+}
+.card-container .card:active {
+  background-color: transparent;
+  color: red;
+  border: 2px solid red;
+}
+.card-container .card span {
+  font-size: 60px;
+}
+.card-container .card h5 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+}
+.score-container .playerName,
+.score-container .computerName {
+  width: 180px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+.score-container .computerName {
+  text-align: right;
+}
+.score-container .playerScore,
+.score-container .computerScore {
+  font-size: 20px;
+  font-weight: 600;
+}
+.score-container .vertical-line {
+  width: 2px;
+  height: 30px;
+  background-color: black;
+}
+
+.gameOver-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.gameOver-container .gameOver-text {
+  position: absolute;
+  top: -330px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 200px;
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  font-size: 120px;
+  margin: 40px;
+  text-transform: uppercase;
+}
+.gameOver-container .resetBtn {
+  margin-top: 80px;
+  padding: 20px 40px;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 2px solid black;
+}
+.gameOver-container .resetBtn:hover {
+  background-color: red;
+  cursor: pointer;
+}
+.gameOver-container .resetBtn:active {
+  background-color: transparent;
+  color: red;
+  border: 2px solid red;
+}
+
+.winner {
+  color: red;
+  font-size: 80px;
+}/*# sourceMappingURL=style.css.map */

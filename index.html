@@ -12,7 +12,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="script.js" defer></script>
     <title>Document</title>
   </head>
@@ -37,11 +41,14 @@
         </div>
       </div>
       <div class="score-container">
-        <div class="playerScore"></div>
-        <div class="computerScore"></div>
+        <div class="playerName">Player</div>
+        <div class="playerScore">5</div>
+        <div class="vertical-line"></div>
+        <div class="computerScore">5</div>
+        <div class="computerName">Computer</div>
       </div>
       <div class="gameOver-container">
-        <h4>Game Over</h4>
+        <h4 class="gameOver-text">Game Over</h4>
         <button class="resetBtn">Reset</button>
       </div>
     </main>
