@@ -1,5 +1,17 @@
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorBtn = document.querySelector(".scissor");
+const resetBtn = document.querySelector("resetBtn");
+
+const gameOverText = document.querySelector(".gameOver-text");
+
+const playerScoreElement = document.querySelector("playerScore");
+const computerScoreElement = document.querySelector("computerScore");
+
 let playerScore = 0;
 let computerScore = 0;
+let gameOver = false;
+const howManyRounds = 5;
 
 function getComputerChoice(objects) {
   function getRandomInt(min, max) {
@@ -29,9 +41,8 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
+function game(howManyRounds) {
   const objects = ["rock", "paper", "scissors"];
-  const howManyRounds = 5;
 
   for (let i = 0; i < howManyRounds; i++) {
     const player = "rock";
@@ -44,4 +55,4 @@ function game() {
   console.log("finished");
 }
 
-game();
+game(howManyRounds);
