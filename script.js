@@ -1,11 +1,8 @@
-const rockBtn = document.querySelector(".rock");
-const paperBtn = document.querySelector(".paper");
-const scissorsBtn = document.querySelector(".scissors");
+const cards = document.querySelectorAll(".card");
 const resetBtn = document.querySelector(".resetBtn");
 const gameOverContainer = document.querySelector(".gameOver-container");
 const playerScoreElement = document.querySelector(".playerScore");
 const computerScoreElement = document.querySelector(".computerScore");
-const objects = ["rock", "paper", "scissors"];
 const howManyRounds = 5;
 const howManyRoundsElement = document.querySelector(".howManyRounds");
 howManyRoundsElement.innerText = howManyRounds;
@@ -14,29 +11,23 @@ let playerScore = 0;
 let computerScore = 0;
 let gameOver = false;
 
-rockBtn.addEventListener("click", (e) => {
-  playRound("rock", getComputerChoice(objects), e);
-});
-
-paperBtn.addEventListener("click", (e) => {
-  playRound("paper", getComputerChoice(objects), e);
-});
-
-scissorsBtn.addEventListener("click", (e) => {
-  playRound("scissors", getComputerChoice(objects), e);
+cards.forEach((card) => {
+  card.addEventListener("click", (e) => {
+    playRound(card.dataset.gameType, getComputerChoice(cards), e);
+  });
 });
 
 resetBtn.addEventListener("click", () => {
   resetGame();
 });
 
-function getComputerChoice(objects) {
+function getComputerChoice(cards) {
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
-  return objects[getRandomInt(0, objects.length)];
+  return cards[getRandomInt(0, cards.length)];
 }
 
 function sleep(ms) {
@@ -95,16 +86,14 @@ function showPlayerSelection(event) {
   card.classList.add("playerActive");
 }
 
-function showComputerSelection(target) {
-  const element = "." + target;
-  const card = document.querySelector(element);
+function showComputerSelection(card) {
   card.classList.add("computerActive");
 }
 
 function removeSelections() {
-  rockBtn.classList.remove("playerActive", "computerActive");
-  paperBtn.classList.remove("playerActive", "computerActive");
-  scissorsBtn.classList.remove("playerActive", "computerActive");
+  cards.forEach((card) => {
+    card.classList.remove("playerActive", "computerActive");
+  });
 }
 
 resetGame();
