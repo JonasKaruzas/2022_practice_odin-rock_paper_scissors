@@ -10,10 +10,14 @@ howManyRoundsElement.innerText = howManyRounds;
 let playerScore = 0;
 let computerScore = 0;
 let gameOver = false;
+let disableClick = false;
 
 cards.forEach((card) => {
   card.addEventListener("click", (e) => {
-    playRound(card.dataset.gameType, getComputerChoice(cards), e);
+    if (!disableClick) {
+      disableClick = true;
+      playRound(card.dataset.gameType, getComputerChoice(cards), e);
+    }
   });
 });
 
@@ -42,6 +46,8 @@ async function playRound(playerSelection, computerSelection, event) {
   checkWhoWon();
 
   function checkWhoWon() {
+    computerSelection = computerSelection.dataset.gameType;
+
     if (playerSelection === computerSelection) {
       return;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -91,6 +97,7 @@ function showComputerSelection(card) {
 }
 
 function removeSelections() {
+  disableClick = false;
   cards.forEach((card) => {
     card.classList.remove("playerActive", "computerActive");
   });
