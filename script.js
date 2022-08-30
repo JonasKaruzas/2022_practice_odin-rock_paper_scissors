@@ -1,12 +1,14 @@
 const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
-const scissorBtn = document.querySelector(".scissor");
+const scissorsBtn = document.querySelector(".scissors");
 const resetBtn = document.querySelector(".resetBtn");
-const gameOverText = document.querySelector(".gameOver-text");
+const gameOverContainer = document.querySelector(".gameOver-container");
 const playerScoreElement = document.querySelector(".playerScore");
 const computerScoreElement = document.querySelector(".computerScore");
 const objects = ["rock", "paper", "scissors"];
 const howManyRounds = 5;
+const howManyRoundsElement = document.querySelector(".howManyRounds");
+howManyRoundsElement.innerText = howManyRounds;
 
 let playerScore = 0;
 let computerScore = 0;
@@ -20,8 +22,8 @@ paperBtn.addEventListener("click", (e) => {
   playRound("paper", getComputerChoice(objects), e);
 });
 
-scissorBtn.addEventListener("click", (e) => {
-  playRound("scissor", getComputerChoice(objects), e);
+scissorsBtn.addEventListener("click", (e) => {
+  playRound("scissors", getComputerChoice(objects), e);
 });
 
 resetBtn.addEventListener("click", () => {
@@ -34,17 +36,19 @@ function getComputerChoice(objects) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
-
   return objects[getRandomInt(0, objects.length)];
 }
 
-function playRound(playerSelection, computerSelection, event) {
-  showPlayerSelection(event);
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-  setTimeout(() => {
-    showComputerSelection(computerSelection);
-    checkWhoWon();
-  }, 800);
+async function playRound(playerSelection, computerSelection, event) {
+  showPlayerSelection(event);
+  await sleep(1000);
+  showComputerSelection(computerSelection);
+  await sleep(1000);
+  checkWhoWon();
 
   function checkWhoWon() {
     if (playerSelection === computerSelection) {
@@ -62,10 +66,10 @@ function playRound(playerSelection, computerSelection, event) {
       computerScore++;
     }
     updateScore();
-    removeSelections();
-
-    isGameOver();
   }
+
+  removeSelections();
+  isGameOver();
 }
 
 function updateScore() {
@@ -74,13 +78,13 @@ function updateScore() {
 }
 
 function isGameOver() {
-  if (playerScore + computerScore === howManyRounds) {
-    gameOverText.style.display = "flex";
+  if (playerScore + computerScore >= howManyRounds) {
+    gameOverContainer.style.display = "flex";
   }
 }
 
 function resetGame() {
-  gameOverText.style.display = "none";
+  gameOverContainer.style.display = "none";
   playerScore = 0;
   computerScore = 0;
   updateScore();
@@ -100,5 +104,7 @@ function showComputerSelection(target) {
 function removeSelections() {
   rockBtn.classList.remove("playerActive", "computerActive");
   paperBtn.classList.remove("playerActive", "computerActive");
-  scissorBtn.classList.remove("playerActive", "computerActive");
+  scissorsBtn.classList.remove("playerActive", "computerActive");
 }
+
+resetGame();
