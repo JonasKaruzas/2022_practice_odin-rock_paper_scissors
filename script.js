@@ -38,33 +38,39 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function checkWhoWon(playerSelection, computerSelection) {
+  computerSelection = computerSelection.dataset.gameType;
+
+  if (playerSelection === computerSelection) {
+    return "It's a tie";
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    playerScore++;
+    return "Player won";
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
+    playerScore++;
+    return "Player won";
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    playerScore++;
+    return "Player won";
+  } else {
+    computerScore++;
+    return "Computer won";
+  }
+}
+
 async function playRound(playerSelection, computerSelection, event) {
   showPlayerSelection(event);
   await sleep(1000);
   showComputerSelection(computerSelection);
   await sleep(1000);
-  checkWhoWon();
 
-  function checkWhoWon() {
-    computerSelection = computerSelection.dataset.gameType;
-
-    if (playerSelection === computerSelection) {
-      return;
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-      playerScore++;
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-      playerScore++;
-    } else if (
-      playerSelection === "scissors" &&
-      computerSelection === "paper"
-    ) {
-      playerScore++;
-    } else {
-      computerScore++;
-    }
-    updateScore();
-  }
-
+  showResult(
+    computerSelection,
+    checkWhoWon(playerSelection, computerSelection)
+  );
+  await sleep(3000);
+  hideResult();
+  updateScore();
   removeSelections();
   isGameOver();
 }
@@ -104,3 +110,19 @@ function removeSelections() {
 }
 
 resetGame();
+
+function showResult(computerChoice, whoWon) {
+  const resultContainer = document.querySelector(".result-container");
+  const resultText = resultContainer.querySelector(".result-text");
+  const resultValue = resultContainer.querySelector(".result-value");
+
+  resultContainer.style.display = "flex";
+  console.log(computerChoice);
+  resultText.innerText = `COMPUTER CHOSE ${computerChoice.dataset.gameType.toUpperCase()}`;
+  resultValue.innerText = `${whoWon}`;
+}
+
+function hideResult() {
+  const resultContainer = document.querySelector(".result-container");
+  resultContainer.style.display = "none";
+}

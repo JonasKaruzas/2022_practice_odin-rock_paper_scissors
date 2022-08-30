@@ -19,6 +19,7 @@ header {
 }
 
 main {
+  position: relative;
   h2 {
     text-align: center;
     margin: 40px;
@@ -133,6 +134,54 @@ main {
       background-color: transparent;
       color: red;
       border: 2px solid red;
+    }
+  }
+}
+
+.result-container {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  left: -20px;
+  top: 150px;
+  height: 200px;
+  width: calc(100% + 40px);
+  backdrop-filter: blur(10px);
+
+  .result-text {
+    margin: 0;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .result-value {
+    margin-top: 0;
+    font-size: 40px;
+  }
+
+  .continueBtn {
+    position: absolute;
+    top: 289px;
+    margin-top: 80px;
+    padding: 20px 40px;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid black;
+
+    &:hover {
+      background-color: green;
+      color: white;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: transparent;
+      color: green;
+      border: 2px solid green;
     }
   }
 }
