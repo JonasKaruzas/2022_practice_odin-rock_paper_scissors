@@ -87,8 +87,8 @@ function resetGame() {
 }
 
 function showPlayerSelection(event) {
-  console.dir(event.target);
-  event.target.classList.add("playerActive");
+  const card = event.target.closest(`.card`);
+  card.classList.add("playerActive");
 }
 
 function showComputerSelection(target) {
