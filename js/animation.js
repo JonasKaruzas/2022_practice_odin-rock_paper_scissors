@@ -1,26 +1,24 @@
 import { cards } from "./index.js";
 
-function scaleAnimation() {
+async function scaleAnimation() {
+  let delay = 100;
+
   const addScale = (card) => {
-    console.log("1");
     card.classList.add("scale");
   };
 
   const removeScale = (card) => {
-    console.log("2");
     card.classList.remove("scale");
   };
 
-  cards.forEach((card) => {
-    const anim = new Promise((res, rej) => {
-      setTimeout(() => {
-        addScale(card);
-      }, 500);
-
+  cards.forEach((card, idx) => {
+    setTimeout(() => {
+      addScale(card);
       setTimeout(() => {
         removeScale(card);
-      }, 1000);
-    });
+      }, 200);
+    }, delay);
+    delay += 50;
   });
 }
 

@@ -1,4 +1,4 @@
-import { disableMultipleClick, enableMultipleClick } from "./utils.js";
+import { enableMultipleClick } from "./utils.js";
 import { cards } from "./index.js";
 
 const playerScoreElement = document.querySelector(".playerScore");

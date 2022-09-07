@@ -1,7 +1,7 @@
 import { getComputerChoice, resetGame, playRound } from "./game.js";
 import { disableClick, disableMultipleClick } from "./utils.js";
 
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card.game");
 const resetBtn = document.querySelector(".resetBtn");
 
 cards.forEach((card) => {
