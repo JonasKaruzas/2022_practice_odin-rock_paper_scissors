@@ -18,16 +18,18 @@
       href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="script.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
+    <script src="./js/index.js" type="module"></script>
     <title>Document</title>
   </head>
   <body>
     <header>
-      <h1>Rock, paper, scissors</h1>
+      <h1>Rock - Paper - Scissors</h1>
+      <h2>The classic game we all love</h2>
     </header>
     <main>
-      <h2>Best out of <span class="howManyRounds"></span></h2>
-      <h2>Please choose</h2>
+      <h2>Best out of <span class="howManyRounds"></span> wins</h2>
+      <h2>Please choose your hand</h2>
       <div class="card-container noselect">
         <div data-game-type="rock" class="card">
           <span class="material-symbols-outlined"> blur_circular </span>
@@ -56,8 +58,45 @@
       <div class="result-container">
         <h4 class="result-text">COMPUTER CHOSE</h4>
         <h4 class="result-value"></h4>
-        <!-- <button class="continueBtn">Continue</button> -->
       </div>
     </main>
+    <ul class="circles">
+      <li>
+        <div data-game-type="rock" class="animation card">
+          <span class="material-symbols-outlined"> blur_circular </span>
+          <h5>ROCK</h5>
+        </div>
+      </li>
+      <li>
+        <div data-game-type="paper" class="animation card">
+          <span class="material-symbols-outlined"> note </span>
+          <h5>PAPER</h5>
+        </div>
+      </li>
+      <li>
+        <div data-game-type="scissors" class="animation card">
+          <span class="material-symbols-outlined"> content_cut </span>
+          <h5>SCISSORS</h5>
+        </div>
+      </li>
+      <li>
+        <div data-game-type="rock" class="animation card">
+          <span class="material-symbols-outlined"> blur_circular </span>
+          <h5>ROCK</h5>
+        </div>
+      </li>
+      <li>
+        <div data-game-type="paper" class="animation card">
+          <span class="material-symbols-outlined"> note </span>
+          <h5>PAPER</h5>
+        </div>
+      </li>
+      <li>
+        <div data-game-type="scissors" class="animation card">
+          <span class="material-symbols-outlined"> content_cut </span>
+          <h5>SCISSORS</h5>
+        </div>
+      </li>
+    </ul>
   </body>
 </html>
